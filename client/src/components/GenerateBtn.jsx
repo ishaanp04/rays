@@ -9,6 +9,7 @@ const GenerateBtn = () => {
   const navigate = useNavigate();
   const onClickHandler = () => {
     if (user) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
       navigate('/result');
     } else {
       setShowLogin(true);

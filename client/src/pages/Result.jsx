@@ -1,14 +1,34 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { motion } from 'motion/react';
 import { assets } from '../assets/assets';
+import { AppContext } from '../context/AppContext';
 
 const Result = () => {
-  const [image, setImage] = useState(assets.sample_img_1);
+  const [image, setImage] = useState(
+    localStorage.getItem('image') || assets.sample_img_1
+  );
   const [isImageLoaded, setIsImageLoaded] = useState(false);
-  const [loading, SetLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [input, setInput] = useState('');
+  const { generateImage } = useContext(AppContext);
 
-  const onSubmitHandler = async (e) => {};
+  const onSubmitHandler = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    if (input) {
+      // console.log(input);
+      const image = await generateImage(input);
+
+      if (image) {
+        setIsImageLoaded(true);
+        setImage(image);
+        localStorage.setItem('image', image);
+      }
+    }
+
+    setLoading(false);
+  };
 
   return (
     <>
@@ -22,6 +42,11 @@ const Result = () => {
       >
         <div>
           <div className="relative">
+            {isImageLoaded && (
+              <h1 className="text-center text-2xl font-semibold mb-2 max-w-sm overflow-auto scroll-m-4">
+                {input}
+              </h1>
+            )}
             <img className="max-w-sm rounded" src={image} alt="" />
             <span
               className={`absolute bottom-0 left-0 h-1 bg-blue-500 ${

@@ -17,7 +17,10 @@ const Steps = () => {
       <p className="text-lg text-gray-600 mb-8 ">Transform Words Into Images</p>
       <div className="space-y-4 w-full max-w-3xl text-sm">
         {stepsData.map((step, index) => (
-          <div className="flex items-center gap-4 p-5 px-8 bg-white/20 border border-neutral-200 shadow-md cursor-pointer hover:scale-[1.02] transition-all duration-100 rounded-2xl">
+          <div
+            key={index}
+            className="flex items-center gap-4 p-5 px-8 bg-white/20 border border-neutral-200 shadow-md cursor-pointer hover:scale-[1.02] transition-all duration-100 rounded-2xl"
+          >
             <div className="px-[16px] py-[14px] rounded-full text-xl bg-purple-50 drop-shadow-md">
               <FontAwesomeIcon
                 className="aspect-square"

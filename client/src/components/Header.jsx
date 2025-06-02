@@ -11,6 +11,7 @@ const Header = () => {
   const onClickHandler = () => {
     if (user) {
       navigate('/result');
+      scrollTo('top');
     } else {
       setShowLogin(true);
     }
@@ -24,7 +25,7 @@ const Header = () => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
     >
-      <motion.div
+      {/* <motion.div
         className="text-stone-500 inline-flex text-center gap-2 bg-white px-6 py-1 rounded-full border border-neutral-500"
         initial={{ opacity: 0, y: -50 }}
         // transition={{ duration: 1, ease: [0, 0.4, 0.1, 1.01] }}
@@ -39,7 +40,7 @@ const Header = () => {
             className="text-yellow-600"
           />
         </div>
-      </motion.div>
+      </motion.div> */}
 
       <motion.h1
         className="text-4xl max-w-[300px] sm:text-6xl sm:max-w-[590px] mx-auto mt-10 text-center"

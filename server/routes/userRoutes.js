@@ -14,6 +14,6 @@ userRouter.post('/register', registerUser);
 // http://localhost:4000/api/user/login
 userRouter.post('/login', loginUser);
 // http://localhost:4000/api/user/credits
-userRouter.post('/credits', userAuth, userCredits);
+userRouter.get('/credits', userAuth, userCredits);
 
 export default userRouter;

@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import './fontawesome';
 import Home from './pages/Home';
 import Result from './pages/Result';
@@ -14,6 +15,7 @@ const App = () => {
 
   return (
     <div className="px-4a sm:px-10a md:px-14a lg:px-28a min-h-screen bg-gradient-to-b from-purple-50 to-yellow-50">
+      <ToastContainer position="bottom-right" />
       <Navbar />
       {showLogin && <Login />}
       <Routes>
