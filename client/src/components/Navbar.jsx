@@ -45,7 +45,7 @@ const Navbar = () => {
                 <FontAwesomeIcon icon="fa-solid fa-user" className="" />
               </div>
               <div className="absolute hidden group-hover:block top-0 right-0 z-10 text-black rounded pt-12">
-                <ul className="list-none m-0 p-2 bg-white rounded-md border text-sm">
+                <ul className="list-none m-0 p-2 bg-white rounded-md border border-neutral-200/60 text-sm">
                   <li
                     onClick={logout}
                     className="py-1 px-2 cursor-pointer pr-10"
