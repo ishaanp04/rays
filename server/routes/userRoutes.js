@@ -4,6 +4,7 @@ import {
   userCredits,
   paymentRazorpay,
   verifyRazorpay,
+  userPromptHistory,
 } from '../controllers/userController.js';
 import express from 'express';
 import userAuth from '../middlewares/auth.js';
@@ -17,6 +18,8 @@ userRouter.post('/register', registerUser);
 userRouter.post('/login', loginUser);
 // http://localhost:4000/api/user/credits
 userRouter.get('/credits', userAuth, userCredits);
+// http://localhost:4000/api/user/history
+userRouter.get('/history', userAuth, userPromptHistory);
 // http://localhost:4000/api/user/pay-razor
 userRouter.post('/pay-razor', userAuth, paymentRazorpay);
 // http://localhost:4000/api/user/verify-razor

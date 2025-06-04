@@ -9,7 +9,7 @@ const Navbar = () => {
   const { user, setShowLogin, logout, credit } = useContext(AppContext);
 
   return (
-    <div className="flex justify-around gap-48 pt-14  items-center bg-gradient-to-b from-purple-200 to-purple-50">
+    <div className="flex justify-around gap-180 pt-14  items-center bg-gradient-to-b from-purple-200 to-purple-50">
       <Link className="flex items-center gap-2" to="/">
         <img
           src={assets.rays_logo}

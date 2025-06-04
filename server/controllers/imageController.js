@@ -1,6 +1,7 @@
 import FormData from 'form-data';
 import userModel from '../models/userModel.js';
 import axios from 'axios';
+import { v2 as cloudinary } from 'cloudinary';
 
 export const generateImage = async (req, res) => {
   try {
@@ -38,17 +39,43 @@ export const generateImage = async (req, res) => {
 
     const base64Image = Buffer.from(data, 'binary').toString('base64');
 
-    const resultImage = `data:image/png;base64, ${base64Image}`;
+    const resultImage = `data:image/png;base64,${base64Image}`;
+
+    cloudinary.config({
+      cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+      api_key: process.env.CLOUDINARY_API_KEY,
+      api_secret: process.env.CLOUDINARY_API_SECRET,
+    });
+
+    const uploadResult = await cloudinary.uploader.upload(resultImage);
+    const imageUrl = uploadResult.secure_url;
+
+    const newPromptEntry = {
+      prompt,
+      imageUrl,
+    };
 
     await userModel.findByIdAndUpdate(user._id, {
       creditBalance: user.creditBalance - 1,
+      $push: {
+        promptHistory: {
+          $each: [
+            {
+              prompt,
+              imageUrl,
+              generatedAt: new Date(),
+            },
+          ],
+          $slice: -10, // Keeps only the most recent 10 entries
+        },
+      },
     });
 
     res.json({
       success: true,
       message: 'Image generated',
       creditBalance: user.creditBalance - 1,
-      resultImage,
+      imageUrl,
     });
   } catch (error) {
     console.log(error);

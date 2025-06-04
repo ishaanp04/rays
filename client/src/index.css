@@ -19,8 +19,56 @@ html {
 }
 
 .placeholder-color {
-  color: #e0e0e0;
-  font-weight: 300;
+  color: #18022f;
+  font-weight: 400;
+}
+
+.fade-mask {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 20%,
+    black 80%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 20%,
+    black 80%,
+    transparent
+  );
+}
+.fade-mask-right {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 0%,
+    black 70%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 0%,
+    black 70%,
+    transparent
+  );
+}
+
+.hide-scroll-bar {
+  /* overflow-x: scroll; Add the ability to scroll */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.hide-scroll-bar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.hide-scroll-bar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 /* :root {

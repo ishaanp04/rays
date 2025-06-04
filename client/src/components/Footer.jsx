@@ -19,12 +19,20 @@ const Footer = () => {
         Copyright bla bla (Not Really)
       </p>
       <div className="flex gap-2.5">
-        <div className="px-[16px] py-[12px] rounded-full text-xl bg-purple-50 drop-shadow-md">
+        <a
+          href="https://github.com/ishaanp04"
+          target="_blank"
+          className="px-[16px] py-[12px] rounded-full text-xl bg-purple-50 drop-shadow-md"
+        >
           <FontAwesomeIcon icon="fa-brands fa-github" />
-        </div>
-        <div className="px-[16px] py-[12px] rounded-full text-xl bg-purple-50 drop-shadow-md">
+        </a>
+        <a
+          href="https://instagram.com/ishaanpishaan"
+          target="_blank"
+          className="px-[16px] py-[12px] rounded-full text-xl bg-purple-50 drop-shadow-md"
+        >
           <FontAwesomeIcon icon="fa-brands fa-instagram" />
-        </div>
+        </a>
       </div>
     </div>
   );

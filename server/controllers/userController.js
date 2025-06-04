@@ -65,7 +65,11 @@ const loginUser = async (req, res) => {
     if (isMatch) {
       const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
 
-      res.json({ success: true, token, user: { name: user.name } });
+      res.json({
+        success: true,
+        token,
+        user: { name: user.name, promptHistory: user.promptHistory },
+      });
     } else {
       return res.json({ success: false, message: 'Invalid credentials' });
     }
@@ -84,6 +88,24 @@ const userCredits = async (req, res) => {
       success: true,
       data: { credits: user.creditBalance, user: { name: user.name } },
     });
+  } catch (error) {
+    console.log(error);
+    return res.json({ success: false, message: error.message });
+  }
+};
+
+const userPromptHistory = async (req, res) => {
+  try {
+    const { userId } = req;
+
+    const user = await userModel.findById(userId);
+
+    // Sort promptHistory by generatedAt (newest first)
+    const sortedHistory = [...user.promptHistory].sort(
+      (a, b) => new Date(b.generatedAt) - new Date(a.generatedAt)
+    );
+
+    res.json({ success: true, data: { promptHistory: sortedHistory } });
   } catch (error) {
     console.log(error);
     return res.json({ success: false, message: error.message });
@@ -202,6 +224,7 @@ export {
   registerUser,
   loginUser,
   userCredits,
+  userPromptHistory,
   paymentRazorpay,
   verifyRazorpay,
 };

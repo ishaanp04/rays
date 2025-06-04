@@ -25,8 +25,6 @@ const AppContextProvider = (props) => {
         // console.log('credits acquired');
         setCredit(data.data.credits);
         setUser(data.data.user.name);
-      } else {
-        console.log('credits acquisition failed');
       }
     } catch (error) {
       console.log(error);
@@ -41,11 +39,10 @@ const AppContextProvider = (props) => {
         { prompt },
         { headers: { token } }
       );
-      // console.log(data);
 
       if (data.success) {
         loadCreditsData();
-        return data.resultImage;
+        return data.imageUrl;
       } else {
         toast.error(data.message);
         loadCreditsData();
@@ -63,6 +60,7 @@ const AppContextProvider = (props) => {
     localStorage.removeItem('token');
     setToken('');
     setUser(null);
+    navigate('/');
   };
 
   useEffect(() => {

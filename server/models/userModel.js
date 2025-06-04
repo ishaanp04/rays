@@ -18,6 +18,16 @@ const userSchema = new mongoose.Schema({
     type: Number,
     default: 5,
   },
+  promptHistory: {
+    type: [
+      {
+        prompt: String,
+        imageUrl: String,
+        generatedAt: { type: Date, default: Date.now },
+      },
+    ],
+    default: [],
+  },
 });
 
 const userModel = mongoose.models.user || mongoose.model('user', userSchema);
