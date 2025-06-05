@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const Testimonials = () => {
   return (
     <motion.div
-      className="flex flex-col items-center justify-center my-20 py-12"
+      className="flex flex-col items-center justify-center lg:mt-18 sm:mt-10 max-sm:mt-14 py-12"
       initial={{ opacity: 0.1, y: 100 }}
       // animate={{ opacity: 1}}
       whileInView={{ opacity: 1, y: 0 }}

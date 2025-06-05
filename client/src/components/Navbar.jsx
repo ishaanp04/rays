@@ -9,14 +9,10 @@ const Navbar = () => {
   const { user, setShowLogin, logout, credit } = useContext(AppContext);
 
   return (
-    <div className="flex justify-around gap-180 pt-14  items-center bg-gradient-to-b from-purple-200 to-purple-50">
+    <div className="flex justify-around gap-[45%] min-2xl:gap-100 max-md:px-10 md:pt-14 sm:pt-8 max-sm:pt-6 items-center bg-gradient-to-b from-purple-200 to-purple-50">
       <Link className="flex items-center gap-2" to="/">
-        <img
-          src={assets.rays_logo}
-          alt="rays logo"
-          className="w-28 sm:w-28 lg:w-20 "
-        />
-        <div className="text-4xl font-bold borel-regular text-purple-500">
+        <img src={assets.rays_logo} alt="rays logo" className="w-20 sm:w-18" />
+        <div className="text-3xl md:text-4xl max-[500px]:text-2xl font-bold borel-regular text-purple-500">
           rays
         </div>
       </Link>
@@ -28,23 +24,25 @@ const Navbar = () => {
               onClick={() => {
                 navigate('/buy');
               }}
-              className="flex items-center gap-2 px-4 sm:px-6 py-1.5 sm:py-3 rounded-full bg-purple-300 hover:scale-105 transition-all duration-75 ease-in-out"
+              className="flex items-center gap-2 px-4 md:px-6 py-1.5 sm:py-3 rounded-full bg-purple-300 hover:scale-105 transition-all duration-75 ease-in-out"
             >
               <FontAwesomeIcon
                 className="text-yellow-500"
                 icon="fa-solid fa-bolt"
                 // style={{ color: '#63E6BE' }}
               />
-              <p className="text-xs sm:text-sm font-medium text-gray-800">
-                Credits Left: {credit}
+              <p className="text-xsa text-sm font-medium text-gray-800">
+                <span className="max-[900px]:hidden">Credits</span>{' '}
+                <span className="max-lg:hidden"> Left </span>
+                <span className="max-[900px]:hidden">:</span> {credit}
               </p>
             </button>
-            <p className="max-sm:hidden pl-4 text-gray-800">Hi, {user}</p>
+            <p className="max-[800px]:hidden pl-4 text-gray-800">Hi, {user}</p>
             <div className="relative group">
               <div className="px-2.5 py-1 rounded-full shadow-md/15 inset-shadow-sm">
                 <FontAwesomeIcon icon="fa-solid fa-user" className="" />
               </div>
-              <div className="absolute hidden group-hover:block top-0 right-0 z-10 text-black rounded pt-12">
+              <div className="absolute hidden group-hover:block group-focus:block top-0 right-0 z-10 text-black rounded pt-12">
                 <ul className="list-none m-0 p-2 bg-white rounded-md border border-neutral-200/60 text-sm">
                   <li
                     onClick={logout}
@@ -62,7 +60,7 @@ const Navbar = () => {
               onClick={() => {
                 navigate('/buy');
               }}
-              className="cursor-pointer"
+              className="cursor-pointer max-[500px]:text-xs"
             >
               Pricing
             </p>
@@ -70,7 +68,7 @@ const Navbar = () => {
               onClick={() => {
                 setShowLogin(true);
               }}
-              className="cursor-pointer bg-zinc-800 text-white px-7 py-2 sm:px-10 text-sm rounded-full"
+              className="cursor-pointer bg-zinc-800 text-white px-7 py-2 sm:px-10 max-[500px]:px-4 text-sm max-[500px]:text-xs rounded-full"
             >
               Login
             </button>

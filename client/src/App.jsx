@@ -14,7 +14,7 @@ const App = () => {
   const { showLogin } = useContext(AppContext);
 
   return (
-    <div className="px-4a sm:px-10a md:px-14a lg:px-28a min-h-screen bg-gradient-to-b from-purple-50 to-yellow-50">
+    <div className="px-4a sm:px-10a md:px-14a lg:px-28a max-w-screen min-h-screen bg-gradient-to-b from-purple-50 to-yellow-50 overflow-x-hidden">
       <ToastContainer position="bottom-right" />
       <Navbar />
       {showLogin && <Login />}
