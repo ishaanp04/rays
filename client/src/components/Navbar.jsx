@@ -68,7 +68,7 @@ const Navbar = () => {
               onClick={() => {
                 setShowLogin(true);
               }}
-              className="cursor-pointer bg-zinc-800 text-white px-7 py-2 sm:px-10 max-[500px]:px-4 text-sm max-[500px]:text-xs rounded-full"
+              className="cursor-pointer bg-purple-950 text-white px-7 py-2 sm:px-10 max-[500px]:px-4 text-sm max-[500px]:text-xs rounded-full"
             >
               Login
             </button>
