@@ -145,17 +145,17 @@ const Result = () => {
               </h1>
             )}
             <div className="border-2a border-green-600">
-              <div className="relative border-6 border-dashed max-[390px]:max-w-2xs flex justify-center items-center border-purple-900 rounded p-2">
+              <div className="relative border-6 border-dashed aspect-square max-[390px]:max-w-2xs flex justify-center items-center border-purple-900 rounded p-2">
                 {image ? (
                   <motion.img
-                    className="sm:max-w-sm max-sm:max-w-xs border-2 max-[390px]:w-full rounded"
+                    className="sm:max-w-sm max-sm:max-w-xs border-2a max-[390px]:w-full rounded"
                     src={image}
                     alt=""
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                   />
                 ) : (
-                  <div className="flex flex-col bg-purple-100 m-2 sm:max-w-sm min-w-sm aspect-square text-center justify-center">
+                  <div className="flex flex-col bg-purple-100 m-2 sm:max-w-sm min-[450px]:min-w-sm max-[390px]:w-full aspect-square text-center justify-center">
                     Your image will come here
                   </div>
                 )}
