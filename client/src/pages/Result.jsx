@@ -168,17 +168,17 @@ const Result = () => {
               <p className={!loading ? 'hidden' : ''}>Loading...</p>
             </div>
             {!isImageLoaded && (
-              <div className="flex justify-between w-full max-w-md border-2a border-pink-700 bg-purple-200/60 text-purple-950 text-sm p-0.5 rounded-xl mt-10">
+              <div className="flex justify-between w-full max-w-md border-2a border-pink-700 bg-purple-200/60 text-purple-950 text-sm sm:p-0.5 rounded-xl mt-10">
                 <input
                   onChange={(e) => setInput(e.target.value)}
                   value={input}
                   type="text"
-                  placeholder="Describe what you want to generate"
-                  className="flex-1 bg-transparent outline-none ml-4 max-sm:w-20 placeholder-color"
+                  placeholder='Try "Cats eating icecream"'
+                  className="flex-1 bg-transparent outline-none ml-3 max-sm:w-20 placeholder-color"
                 />
                 <button
                   type="submit"
-                  className="flex justify-end items-center w-36 bg-purple-900a text-white mr-4 px-10a sm:px-16a py-3 rounded-mda"
+                  className="flex justify-center items-center border-2a sm:w-16 max-sm:w-12 bg-purple-900a rounded-lg bg-purple-300/60 text-white mr-4a px-10a sm:px-16a py-3 rounded-mda"
                 >
                   {/* <p>Generate</p> */}
                   <FontAwesomeIcon
