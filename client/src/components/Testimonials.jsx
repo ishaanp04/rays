@@ -13,9 +13,7 @@ const Testimonials = () => {
       viewport={{ once: true }}
       transition={{ duration: 0.6, ease: [0, 0.2, 0.1, 1] }}
     >
-      <h1 className="text-3xl sm:text-4xl font-semibold mb-2">
-        Customer Testimonials
-      </h1>
+      <h1 className="text-3xl sm:text-4xl font-semibold mb-2">User Reviews</h1>
       <p className="text-gray-500 mb-12">What Our Users Are Saying</p>
       <div className="flex flex-wrap gap-6">
         {testimonialsData.map((testimonial, index) => (
