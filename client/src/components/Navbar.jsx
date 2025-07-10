@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { assets } from '../assets/assets';
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,6 +7,14 @@ import { AppContext } from '../context/AppContext';
 const Navbar = () => {
   const navigate = useNavigate();
   const { user, setShowLogin, logout, credit } = useContext(AppContext);
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  useEffect(() => {
+    setShowDropdown(false); // close dropdown whenever user changes
+  }, [user]);
+
+  const toggleDropdown = () => setShowDropdown((prev) => !prev);
+  const closeDropdown = () => setShowDropdown(false);
 
   return (
     <div className="flex justify-around gap-[45%] min-2xl:gap-100 max-md:px-10 md:pt-14 sm:pt-8 max-sm:pt-6 items-center bg-gradient-to-b from-purple-200 to-purple-50">
@@ -38,15 +46,27 @@ const Navbar = () => {
               </p>
             </button>
             <p className="max-[800px]:hidden pl-4 text-gray-800">Hi, {user}</p>
-            <div className="relative group">
-              <div className="px-2.5 py-1 rounded-full shadow-md/15 inset-shadow-sm">
-                <FontAwesomeIcon icon="fa-solid fa-user" className="" />
+            <div
+              className="relative group cursor-pointer"
+              onClick={toggleDropdown}
+              onMouseLeave={closeDropdown} // optional: close on mouse leave for desktop
+            >
+              <div className="px-3.5 py-2 rounded-full shadow-md/15 inset-shadow-sm">
+                <FontAwesomeIcon icon="fa-solid fa-user" />
               </div>
-              <div className="absolute hidden group-hover:block group-focus:block top-0 right-0 z-10 text-black rounded pt-12">
-                <ul className="list-none m-0 p-2 bg-white rounded-md border border-neutral-200/60 text-sm">
+
+              {/* Dropdown */}
+              <div
+                className={`absolute top-0 right-0 z-10 text-black rounded pt-12 ${
+                  showDropdown ? 'block' : 'hidden'
+                } group-hover:block`}
+              >
+                <ul className="list-none m-0 p-2a bg-white rounded-md border border-neutral-200/60 text-sm">
                   <li
-                    onClick={logout}
-                    className="py-1 px-2 cursor-pointer pr-10"
+                    onClick={() => {
+                      logout();
+                    }}
+                    className="py-2.5 px-4 cursor-pointer pr-10 hover:bg-gray-300 transition-colors duration-200"
                   >
                     Logout
                   </li>
