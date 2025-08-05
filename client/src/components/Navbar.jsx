@@ -66,7 +66,7 @@ const Navbar = () => {
                     onClick={() => {
                       logout();
                     }}
-                    className="py-2.5 px-4 cursor-pointer pr-10 hover:bg-gray-300 transition-colors duration-200"
+                    className="py-2.5 px-4 cursor-pointer pr-10 hover:bg-gray-300 active:bg-gray-300 transition-colors duration-100"
                   >
                     Logout
                   </li>

@@ -1,0 +1,7 @@
+buildCommand: vite build
+startCommand: vite preview --port $PORT
+
+routes:
+  - type: rewrite
+    source: /.*
+    destination: /

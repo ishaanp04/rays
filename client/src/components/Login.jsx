@@ -8,6 +8,7 @@ import { AppContext } from '../context/AppContext';
 
 const Login = () => {
   const [state, setState] = useState('Login');
+  const [loading, setLoading] = useState(false);
   const { setShowLogin, backendUrl, token, setToken, setUser } =
     useContext(AppContext);
   const [name, setName] = useState('');
@@ -16,6 +17,7 @@ const Login = () => {
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     try {
       if (state === 'Login') {
@@ -29,6 +31,7 @@ const Login = () => {
           setUser(data.user.name);
           localStorage.setItem('token', data.token);
           setShowLogin(false);
+          setLoading(false);
         } else {
           toast.error(data.message);
         }
@@ -44,6 +47,7 @@ const Login = () => {
           setUser(data.user.name);
           localStorage.setItem('token', data.token);
           setShowLogin(false);
+          setLoading(false);
         } else {
           toast.error(data.message);
         }
@@ -128,8 +132,38 @@ const Login = () => {
             Forgot Password?
           </p>
 
-          <button className="bg-purple-400 w-full text-white py-2 rounded-full">
-            {state === 'Login' ? 'Login' : 'Create Account'}
+          <button
+            className="bg-purple-400 w-full cursor-pointer hover:bg-purple-500/80 active:scale-[98%] text-white py-2 rounded-full"
+            disabled={loading}
+          >
+            {loading ? (
+              <span className="flex justify-center gap-2">
+                <svg
+                  className="animate-spin h-5 w-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  ></circle>
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8v4l3-3-3-3v4a8 8 0 100 16v-4l-3 3 3 3v-4a8 8 0 01-8-8z"
+                  ></path>
+                </svg>
+              </span>
+            ) : state === 'Login' ? (
+              'Login'
+            ) : (
+              'Create Account'
+            )}
           </button>
 
           {state === 'Login' ? (
